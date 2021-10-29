@@ -6,7 +6,8 @@
         "magento/framework": "*",
         "ghostunicorns/module-crt-entity": "~1.0.0",
         "ghostunicorns/module-crt-activity": "~1.0.0",
-        "ghostunicorns/module-crt-command": "~1.0.0"
+        "ghostunicorns/module-crt-command": "~1.0.0",
+        "ghostunicorns/module-crt-config-definition": "~1.0.0"
     },
     "authors": [
         {
