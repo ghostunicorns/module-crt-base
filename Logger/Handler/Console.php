@@ -8,6 +8,8 @@ declare(strict_types=1);
 
 namespace GhostUnicorns\CrtBase\Logger\Handler;
 
+use Monolog\Formatter\FormatterInterface;
+use Monolog\Formatter\LineFormatter;
 use Monolog\Handler\AbstractHandler;
 use Monolog\Logger;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -20,6 +22,8 @@ class Console extends AbstractHandler
      * @var OutputInterface
      */
     public $consoleOutput;
+
+    public $formatter;
 
     /**
      * @param OutputInterface $output
@@ -63,5 +67,26 @@ class Console extends AbstractHandler
             return $this->bubble;
         }
         return false;
+    }
+
+    /**
+     * @return FormatterInterface|LineFormatter
+     */
+    public function getFormatter()
+    {
+        if (!$this->formatter) {
+            $this->formatter = $this->getDefaultFormatter();
+        }
+
+        return $this->formatter;
+    }
+
+
+    /**
+     * @return FormatterInterface
+     */
+    protected function getDefaultFormatter()
+    {
+        return new LineFormatter();
     }
 }
